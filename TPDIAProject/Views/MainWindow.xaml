@@ -1,0 +1,34 @@
+﻿<Window x:Class="TPDIAProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPDIAProject"
+        xmlns:components="clr-namespace:TPDIAProject.Components"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        x:Name="root">
+    <Grid>
+        <ItemsControl
+            ItemsSource="{Binding FuelTanks}"
+            >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="5" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <components:FuelTank
+                        Margin="5"
+                        MaxValue="{Binding MaxValue, Mode=TwoWay}"
+                        MinValue="{Binding MInValue, Mode=TwoWay}"
+                        CurrentValue="{Binding CurrentValue, Mode=TwoWay}"
+                        WarningLevel="{Binding WarningValue, Mode=TwoWay}"
+                        CriticalLevel="{Binding CriticalValue, Mode=TwoWay}"
+                        />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>

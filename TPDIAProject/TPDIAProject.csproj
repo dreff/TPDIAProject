@@ -73,7 +73,9 @@
       <DependentUpon>FuelTank.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\StringFormatConverter.cs" />
+    <Compile Include="Models\Data.cs" />
     <Compile Include="Models\FuelTank.cs" />
+    <Compile Include="ViewModels\LogEntry.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -98,6 +100,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Data\tankMeasures.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,7 +110,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Data\temperatura_miesiacami.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\zuzycie_paliwa_godzinowo.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

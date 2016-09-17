@@ -6,29 +6,86 @@
         xmlns:local="clr-namespace:TPDIAProject"
         xmlns:components="clr-namespace:TPDIAProject.Components"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="600" Width="800"
         x:Name="root">
     <Grid>
-        <ItemsControl
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid
+            Grid.Column="0"
+            Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ItemsControl
+            Grid.Row="0"
             ItemsSource="{Binding FuelTanks}"
             >
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="5" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <components:FuelTank
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <components:FuelTank
                         Margin="5"
                         MaxValue="{Binding MaxValue, Mode=TwoWay}"
-                        MinValue="{Binding MInValue, Mode=TwoWay}"
+                        MinValue="{Binding MinValue, Mode=TwoWay}"
                         CurrentValue="{Binding CurrentValue, Mode=TwoWay}"
                         WarningLevel="{Binding WarningValue, Mode=TwoWay}"
                         CriticalLevel="{Binding CriticalValue, Mode=TwoWay}"
                         />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Border
+            Grid.Row="1"
+            BorderBrush="Black"
+            BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    >
+                    Szybkość zmian
+                    </TextBlock>
+                    <Slider 
+                        Grid.Row="1"
+                        Margin="2"
+                        Value="{Binding Speed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Maximum="{Binding MaxSpeed}"
+                        Minimum="{Binding MinSpeed}"
+                        />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid
+            Grid.Column="1"
+            Margin="2"
+            >
+            <ListView
+                ItemsSource="{Binding LogActivity}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" Margin="1">
+                            <TextBlock Text="{Binding Text}" Background="{Binding Background}" TextWrapping="Wrap" />
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>

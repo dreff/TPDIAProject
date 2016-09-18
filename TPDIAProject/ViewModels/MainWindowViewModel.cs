@@ -176,7 +176,7 @@ namespace TPDIAProject.ViewModels
                 SetProperty(ref _speed, value);
                 if (AnimationTimer == null)
                 {
-                    AnimationTimer = new Timer(Animate, null, ANIMATION_DUE_TIME, (MaxSpeed - _speed + MinSpeed) * ANIMATION_INTERVAL_OFFSET);
+                    AnimationTimer = new Timer(Animate, null, ANIMATION_DUE_TIME, (MaxSpeed - 20 - _speed + MinSpeed) * ANIMATION_INTERVAL_OFFSET);
                 }
                 else
                 {
@@ -196,9 +196,9 @@ namespace TPDIAProject.ViewModels
         {
             FuelTanks = new List<FuelTank>()
             {
-                new FuelTank("1", 0, 40000),
-                new FuelTank("2", 0, 40000),
-                new FuelTank("3", 0, 40000),
+                new FuelTank("1", 0, 10000),
+                new FuelTank("2", 0, 20000),
+                new FuelTank("3", 0, 30000),
                 new FuelTank("4", 0, 40000),
             };
 

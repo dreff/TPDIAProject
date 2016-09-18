@@ -201,70 +201,70 @@ namespace TPDIAProject.Components
                 {
                     // UBER ANIMATION CODE.
 
-                    if (tank.IsAnimating)
-                    {
-                        return;
-                    }
-                    tank.IsAnimating = true;
-                    var fps = 60;
-                    int delay = 1000 / fps;
+                    //if (tank.IsAnimating)
+                    //{
+                    //    return;
+                    //}
+                    //tank.IsAnimating = true;
+                    //var fps = 60;
+                    //int delay = 1000 / fps;
 
-                    var criticalDiff = CriticalHeight.Value - (tank.OldCriticalHeight.IsAuto ? 0 : tank.OldCriticalHeight.Value);
-                    criticalDiff /= 30.0;
+                    //var criticalDiff = CriticalHeight.Value - (tank.OldCriticalHeight.IsAuto ? 0 : tank.OldCriticalHeight.Value);
+                    //criticalDiff /= 30.0;
 
-                    var warningDiff = WarningHeight.Value - (tank.OldWarningHeight.IsAuto ? 0 : tank.OldWarningHeight.Value);
-                    warningDiff /= 30.0;
+                    //var warningDiff = WarningHeight.Value - (tank.OldWarningHeight.IsAuto ? 0 : tank.OldWarningHeight.Value);
+                    //warningDiff /= 30.0;
 
-                    var blankDiff = BlankHeight.Value - (tank.OldBlankHeight.IsAuto ? 0 : tank.OldBlankHeight.Value);
-                    blankDiff /= 30.0;
+                    //var blankDiff = BlankHeight.Value - (tank.OldBlankHeight.IsAuto ? 0 : tank.OldBlankHeight.Value);
+                    //blankDiff /= 30.0;
 
-                    bool criticalDirection = criticalDiff > 0;
-                    bool warningDirection = warningDiff > 0;
-                    bool blankDirection = blankDiff > 0;
+                    //bool criticalDirection = criticalDiff > 0;
+                    //bool warningDirection = warningDiff > 0;
+                    //bool blankDirection = blankDiff > 0;
 
-                    for (int i = 0; i < 30; i++)
-                    {
-                        if ((criticalDirection && tank.CriticalHeight.Value < CriticalHeight.Value)
-                        || (!criticalDirection && tank.CriticalHeight.Value > CriticalHeight.Value))
-                        {
-                            tank.CriticalHeight = new GridLength((tank.CriticalHeight.Value + criticalDiff), GridUnitType.Star);
-                            if (tank.CriticalHeight.Value < minValue || tank.CriticalHeight.Value < 0)
-                            {
-                                tank.CriticalHeight = new GridLength(minValue, GridUnitType.Star);
-                            }
-                            else if (tank.CriticalHeight.Value > maxValue)
-                            {
-                                tank.CriticalHeight = new GridLength(maxValue, GridUnitType.Star);
-                            }
-                        }
-                        if ((warningDirection && tank.WarningHeight.Value < WarningHeight.Value)
-                        || (!warningDirection && tank.WarningHeight.Value > WarningHeight.Value))
-                        {
-                            tank.WarningHeight = new GridLength((tank.WarningHeight.Value + warningDiff), GridUnitType.Star);
-                            if (tank.WarningHeight.Value < minValue || tank.WarningHeight.Value < 0)
-                            {
-                                tank.WarningHeight = new GridLength(minValue, GridUnitType.Star);
-                            }
-                            else if (tank.WarningHeight.Value > maxValue)
-                            {
-                                tank.WarningHeight = new GridLength(maxValue, GridUnitType.Star);
-                            }
-                        }
-                        if ((blankDirection && tank.BlankHeight.Value < BlankHeight.Value)
-                        || (!blankDirection && tank.BlankHeight.Value > BlankHeight.Value))
-                        {
-                            tank.BlankHeight = new GridLength((tank.BlankHeight.Value + blankDiff), GridUnitType.Star);
-                            if (tank.BlankHeight.Value < minValue || tank.BlankHeight.Value < 0)
-                            {
-                                tank.BlankHeight = new GridLength(minValue, GridUnitType.Star);
-                            }
-                            else if (tank.BlankHeight.Value > maxValue)
-                            {
-                                tank.BlankHeight = new GridLength(maxValue, GridUnitType.Star);
-                            }
-                        }
-                        Thread.Sleep(delay);
-                    }
+                    //for (int i = 0; i < 30; i++)
+                    //{
+                    //    if ((criticalDirection && tank.CriticalHeight.Value < CriticalHeight.Value)
+                    //    || (!criticalDirection && tank.CriticalHeight.Value > CriticalHeight.Value))
+                    //    {
+                    //        tank.CriticalHeight = new GridLength((tank.CriticalHeight.Value + criticalDiff), GridUnitType.Star);
+                    //        if (tank.CriticalHeight.Value < minValue || tank.CriticalHeight.Value < 0)
+                    //        {
+                    //            tank.CriticalHeight = new GridLength(minValue, GridUnitType.Star);
+                    //        }
+                    //        else if (tank.CriticalHeight.Value > maxValue)
+                    //        {
+                    //            tank.CriticalHeight = new GridLength(maxValue, GridUnitType.Star);
+                    //        }
+                    //    }
+                    //    if ((warningDirection && tank.WarningHeight.Value < WarningHeight.Value)
+                    //    || (!warningDirection && tank.WarningHeight.Value > WarningHeight.Value))
+                    //    {
+                    //        tank.WarningHeight = new GridLength((tank.WarningHeight.Value + warningDiff), GridUnitType.Star);
+                    //        if (tank.WarningHeight.Value < minValue || tank.WarningHeight.Value < 0)
+                    //        {
+                    //            tank.WarningHeight = new GridLength(minValue, GridUnitType.Star);
+                    //        }
+                    //        else if (tank.WarningHeight.Value > maxValue)
+                    //        {
+                    //            tank.WarningHeight = new GridLength(maxValue, GridUnitType.Star);
+                    //        }
+                    //    }
+                    //    if ((blankDirection && tank.BlankHeight.Value < BlankHeight.Value)
+                    //    || (!blankDirection && tank.BlankHeight.Value > BlankHeight.Value))
+                    //    {
+                    //        tank.BlankHeight = new GridLength((tank.BlankHeight.Value + blankDiff), GridUnitType.Star);
+                    //        if (tank.BlankHeight.Value < minValue || tank.BlankHeight.Value < 0)
+                    //        {
+                    //            tank.BlankHeight = new GridLength(minValue, GridUnitType.Star);
+                    //        }
+                    //        else if (tank.BlankHeight.Value > maxValue)
+                    //        {
+                    //            tank.BlankHeight = new GridLength(maxValue, GridUnitType.Star);
+                    //        }
+                    //    }
+                    //    Thread.Sleep(delay);
+                    //}
 
                     tank.CriticalHeight = CriticalHeight;
                     tank.WarningHeight = WarningHeight;
